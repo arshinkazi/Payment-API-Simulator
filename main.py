@@ -41,3 +41,12 @@ def refund_payment(cardNumber: str, amount: float):
         raise HTTPException(status_code=400, detail="Invalid card number")
     accounts[cardNumber] = accounts.get(cardNumber, 0) + amount
     return {"status": "refunded", "newBalance": accounts[cardNumber]}
+
+@app.get("/")
+def home():
+    return {
+        "message": "Welcome to the Payment API Simulator!",
+        "info": "Visit /docs for Swagger UI or /redoc for ReDoc API documentation."
+    }
+
+
